@@ -8,6 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from statsmodels.tsa.stattools import adfuller, kpss
 from statsmodels.tsa.vector_ar.var_model import VAR
 from statsmodels.stats.diagnostic import acorr_ljungbox
+from statsmodels.stats.multitest import multipletests
 import warnings
 from typing import Dict, List, Tuple, Optional, Union
 import time
@@ -531,7 +532,7 @@ class OptimizedCausationAnalyzer:
         results_df = pd.DataFrame(results_data)
 
         # Multiple testing correction using Benjamini-Hochberg (FDR control)
-        from statsmodels.stats.multitest import multipletests
+
 
         _, pvalues_corrected, _, _ = multipletests(
             results_df['granger_pvalue'].values,
