@@ -955,7 +955,7 @@ def discover_most_predictable_covents(res: pd.DataFrame):
     Identify which types of co-events are most predictable
     """
 
-    covent_results = res[res['event'].str.contains('covent|confluence')]
+    covent_results = res[res['event'].str.contains('covent|confluence')] # TODO KeyError: 'event'
 
     if len(covent_results) == 0:
         return
@@ -978,7 +978,7 @@ def print_covent_analysis(data):
     """
 
     # Separate individual events from co-events
-    individual_results = data[~data['event'].str.contains('covent|confluence')]
+    individual_results = data[~data['event'].str.contains('covent|confluence')] # TODO KeyError: 'event'
     covent_results = data[data['event'].str.contains('covent')]
     confluence_results = data[data['event'].str.contains('confluence')]
 
@@ -1023,8 +1023,8 @@ if __name__ == "__main__":
 
     # Then run full analysis
     results = example_usage_with_data(indicated)
-    print_covent_analysis(results)
-    discover_most_predictable_covents(results)
+    # print_covent_analysis(results)
+    # discover_most_predictable_covents(results)
 
     # Print final summary
     if len(results) > 0:
