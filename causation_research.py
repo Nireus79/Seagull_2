@@ -8,7 +8,7 @@ from itertools import combinations
 
 warnings.filterwarnings('ignore')
 
-resampled = pd.read_csv('resampled5mEE.csv')
+resampled = pd.read_csv('D:/Seagull_data/labeled5mEE2cov.pkl')
 # pd.set_option('display.max_columns', None)
 
 

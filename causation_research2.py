@@ -610,7 +610,7 @@ def example_usage_with_data(indicated_data: pd.DataFrame):
     Example of how to use the optimized causation analyzer
     """
 
-    # Define event columns (from your technical indicators system)
+    # Define event columns (from your technical indicators' system)
     event_columns = [
         'vpd_volatility_event',
         'outlier_event',
@@ -701,3 +701,12 @@ def compare_performance(data: pd.DataFrame, sample_sizes: List[int] = [10000, 50
 if __name__ == "__main__":
     print("Optimized Causation Research Script Loaded")
     print("Use example_usage_with_data(your_dataframe) to test with your data")
+    indicated = pd.read_pickle('D:/Seagull_data/labeled5mEE2cov.pkl')
+    results = example_usage_with_data(indicated)
+
+    # Or customize the analysis
+    # results = run_optimized_causation_analysis(
+    #     data=indicated,
+    #     event_columns=['CUSUM_event', 'BB_any_cross', 'momentum_regime_event'],
+    #     config={'significance_level': 0.01, 'max_lag': 10}
+    # )
