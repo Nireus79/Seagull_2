@@ -703,6 +703,7 @@ if __name__ == "__main__":
     print("Use example_usage_with_data(your_dataframe) to test with your data")
     indicated = pd.read_pickle('D:/Seagull_data/labeled5mEE2cov.pkl')
     results = example_usage_with_data(indicated)
+    print(results)
 
     # Or customize the analysis
     # results = run_optimized_causation_analysis(
