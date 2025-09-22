@@ -151,7 +151,15 @@ class OptimizedCausationAnalyzer:
             event_series = event_data[event_col]
 
             # Skip events with insufficient variation
-            if event_series.sum() < self.min_samples_per_event:
+            if 'covent' in event_col.lower():
+                min_samples = max(10, self.min_samples_per_event // 5)  # Much lower threshold
+            elif 'confluence' in event_col.lower():
+                min_samples = max(15, self.min_samples_per_event // 3)
+            else:
+                min_samples = self.min_samples_per_event
+
+            if event_series.sum() < min_samples:
+                print(f"Skipping {event_col}: only {event_series.sum()} events (need {min_samples})")
                 continue
 
             # Stage 1: Vectorized correlation screening
@@ -357,6 +365,59 @@ class OptimizedCausationAnalyzer:
             print(f"Error in Granger test for {feature_name} -> {event_name}: {str(e)}")
             return None
 
+    def analyze_event_hierarchy(self, data: pd.DataFrame, results: pd.DataFrame):
+        """
+        Analyze how individual event predictors relate to co-event predictors
+        """
+
+        individual_events = [col for col in data.columns if col.endswith('_event') and 'covent' not in col]
+        covent_events = [col for col in data.columns if 'covent' in col]
+
+        hierarchy_analysis = {}
+
+        for covent in covent_events:
+            # Find which individual events contribute to this co-event
+            base_events = []
+            for individual in individual_events:
+                if individual.replace('_event', '') in covent:
+                    base_events.append(individual)
+
+            # Compare predictors
+            covent_predictors = set(results[results['event'] == covent]['feature'].tolist())
+
+            individual_predictors = set()
+            for base_event in base_events:
+                individual_predictors.update(
+                    results[results['event'] == base_event]['feature'].tolist()
+                )
+
+            hierarchy_analysis[covent] = {
+                'base_events': base_events,
+                'unique_predictors': covent_predictors - individual_predictors,
+                'shared_predictors': covent_predictors & individual_predictors,
+                'enhanced_prediction': len(covent_predictors) > len(individual_predictors)
+            }
+
+        return hierarchy_analysis
+
+    def _covent_specific_granger_test(self, feature_series, event_series, feature_name, event_name):
+        """
+        Modified Granger test optimized for rare co-events
+        """
+
+        # For very rare events, use different approaches
+        event_rate = event_series.mean()
+
+        if event_rate < 0.005:  # Less than 0.5% event rate
+            # Use logistic regression approach for very rare events
+            return self._logistic_granger_test(feature_series, event_series, feature_name, event_name)
+        elif event_rate < 0.02:  # Less than 2% event rate
+            # Use bootstrap approach for better p-value estimation
+            return self._bootstrap_granger_test(feature_series, event_series, feature_name, event_name)
+        else:
+            # Use standard approach
+            return self._fast_granger_test(feature_series, event_series, feature_name, event_name)
+
     def _select_optimal_lag(self, data_matrix: pd.DataFrame) -> int:
         """
         Smart lag selection using information criteria
@@ -533,11 +594,10 @@ class OptimizedCausationAnalyzer:
 
         # Multiple testing correction using Benjamini-Hochberg (FDR control)
 
-
         _, pvalues_corrected, _, _ = multipletests(
             results_df['granger_pvalue'].values,
             alpha=self.significance_level,
-            method='fdr_bh'
+            method='fdr_by'
         )
 
         results_df['granger_pvalue_corrected'] = pvalues_corrected
@@ -605,9 +665,11 @@ def run_optimized_causation_analysis(data: pd.DataFrame,
 
 
 # Example usage function
+# Replace the existing example_usage_with_data function with this enhanced version:
+
 def example_usage_with_data(indicated_data: pd.DataFrame):
     """
-    Example of how to use the optimized causation analyzer
+    Example of how to use the optimized causation analyzer with detailed output
     """
 
     # Define event columns (from your technical indicators' system)
@@ -636,14 +698,30 @@ def example_usage_with_data(indicated_data: pd.DataFrame):
 
     print(f"Found {len(existing_events)} event columns and {len(feature_columns)} feature columns")
 
-    # Configuration for financial time series
+    # Data quality check
+    print(f"\n{'=' * 60}")
+    print("DATA QUALITY OVERVIEW")
+    print(f"{'=' * 60}")
+    print(f"Sample size: {len(indicated_data):,} observations")
+    print(f"Time range: {indicated_data.index.min()} to {indicated_data.index.max()}")
+
+    print(f"\nEvent frequencies:")
+    for event_col in existing_events:
+        if event_col in indicated_data.columns:
+            event_rate = indicated_data[event_col].mean()
+            event_count = indicated_data[event_col].sum()
+            print(f"  {event_col:<25}: {event_count:6,} events ({event_rate:6.2%} rate)")
+
+    # Configuration for financial time series (LESS STRICT)
     config = {
-        'significance_level': 0.01,  # Stricter significance for financial data
-        'max_lag': 10,  # More lags for financial relationships
-        'min_samples_per_event': 100,  # Require more samples per event
-        'enable_spectral_methods': True,  # Use fast spectral methods
-        'cache_stationarity': True  # Cache stationarity results
+        'significance_level': 0.15,  # More lenient for rare co-events
+        'max_lag': 12,  # Co-events might have longer prediction horizons
+        'min_samples_per_event': 25,  # Lower threshold for rare events
+        'enable_spectral_methods': True,
+        'cache_stationarity': True
     }
+
+    print(f"\nConfiguration: significance_level={config['significance_level']}, max_lag={config['max_lag']}")
 
     # Run analysis
     results = run_optimized_causation_analysis(
@@ -652,6 +730,88 @@ def example_usage_with_data(indicated_data: pd.DataFrame):
         feature_columns=feature_columns,
         config=config
     )
+
+    # Print comprehensive results summary
+    print(f"\n{'=' * 60}")
+    print("CAUSATION ANALYSIS RESULTS")
+    print(f"{'=' * 60}")
+
+    total_possible = len(feature_columns) * len(existing_events)
+    print(f"Total relationships tested: {total_possible:,}")
+    print(f"Relationships found: {len(results)}")
+
+    if len(results) > 0:
+        print(f"Significant (corrected): {results['is_significant_corrected'].sum()}")
+        print(f"Significant (raw): {results['is_significant_raw'].sum()}")
+
+        print(f"\nTOP 15 RELATIONSHIPS (by corrected p-value):")
+        print(f"{'Feature':<35} {'Event':<25} {'P-val':<8} {'F-stat':<8} {'Lag':<4} {'Corr':<6}")
+        print("-" * 90)
+
+        top_results = results.head(15)
+        for _, row in top_results.iterrows():
+            significance_marker = "***" if row['is_significant_corrected'] else "**" if row[
+                'is_significant_raw'] else ""
+            print(f"{row['feature']:<35} {row['event']:<25} "
+                  f"{row['granger_pvalue_corrected']:<8.4f} "
+                  f"{row['granger_fstatistic']:<8.2f} "
+                  f"{row['optimal_lag']:<4} "
+                  f"{row['correlation']:<6.3f} {significance_marker}")
+
+        # Results by event type
+        print(f"\n{'=' * 60}")
+        print("RESULTS BY EVENT TYPE")
+        print(f"{'=' * 60}")
+
+        for event in results['event'].unique():
+            event_results = results[results['event'] == event]
+            sig_count_corrected = event_results['is_significant_corrected'].sum()
+            sig_count_raw = event_results['is_significant_raw'].sum()
+            total_count = len(event_results)
+
+            print(f"\n{event}:")
+            print(f"  Total predictors tested: {total_count}")
+            print(f"  Significant (corrected): {sig_count_corrected}")
+            print(f"  Significant (raw): {sig_count_raw}")
+
+            if sig_count_corrected > 0:
+                print(f"  Top corrected predictors:")
+                top_predictors = event_results[event_results['is_significant_corrected']].head(3)
+                for _, row in top_predictors.iterrows():
+                    print(
+                        f"    • {row['feature']:<30} (p={row['granger_pvalue_corrected']:.4f}, lag={row['optimal_lag']})")
+            elif sig_count_raw > 0:
+                print(f"  Top raw predictors:")
+                top_predictors = event_results[event_results['is_significant_raw']].head(3)
+                for _, row in top_predictors.iterrows():
+                    print(f"    • {row['feature']:<30} (p={row['granger_pvalue']:.4f}, lag={row['optimal_lag']})")
+            else:
+                print(f"    No significant predictors found")
+
+        # Summary statistics
+        print(f"\n{'=' * 60}")
+        print("SUMMARY STATISTICS")
+        print(f"{'=' * 60}")
+        print(
+            f"Average lag for significant relationships: {results[results['is_significant_corrected']]['optimal_lag'].mean():.1f}")
+        print(f"Most common lag: {results['optimal_lag'].mode().iloc[0] if len(results) > 0 else 'N/A'}")
+        print(f"Strongest F-statistic: {results['granger_fstatistic'].max():.2f}")
+        print(f"Best p-value (corrected): {results['granger_pvalue_corrected'].min():.6f}")
+
+    else:
+        print("\n⚠️  No relationships found!")
+        print("Possible reasons:")
+        print("  • Multiple testing correction too strict")
+        print("  • Events too rare in the data")
+        print("  • Time series relationships genuinely weak")
+        print("  • Need different lag periods or methods")
+        print("  • Stationarity requirements too strict")
+
+        # Diagnostic suggestions
+        print(f"\nDiagnostic suggestions:")
+        print(f"  • Try significance_level=0.15 for more lenient testing")
+        print(f"  • Reduce min_samples_per_event to 25")
+        print(f"  • Check if events have sufficient variation")
 
     return results
 
@@ -668,7 +828,7 @@ def compare_performance(data: pd.DataFrame, sample_sizes: List[int] = [10000, 50
     # Dummy event columns for testing
     data_test = data.copy()
     data_test['test_event'] = (
-                data_test['Close'].pct_change().abs() > data_test['Close'].pct_change().abs().quantile(0.95))
+            data_test['Close'].pct_change().abs() > data_test['Close'].pct_change().abs().quantile(0.95))
 
     event_cols = ['test_event']
     feature_cols = [col for col in data_test.columns if
@@ -698,16 +858,177 @@ def compare_performance(data: pd.DataFrame, sample_sizes: List[int] = [10000, 50
             print(f"Processing rate: {sample_size / elapsed_time:,.0f} samples/second")
 
 
+def diagnose_data_issues(data: pd.DataFrame, event_columns: List[str]) -> None:
+    """
+    Diagnose potential data issues that could prevent finding relationships
+    """
+
+    print(f"\n{'=' * 60}")
+    print("DATA DIAGNOSTIC REPORT")
+    print(f"{'=' * 60}")
+
+    existing_events = [col for col in event_columns if col in data.columns]
+
+    # Check event frequencies
+    print("Event frequency analysis:")
+    rare_events = []
+    for event_col in existing_events:
+        if event_col in data.columns:
+            event_rate = data[event_col].mean()
+            event_count = data[event_col].sum()
+
+            if event_rate < 0.01:  # Less than 1%
+                rare_events.append(event_col)
+                print(f"  ⚠️  {event_col}: {event_count} events ({event_rate:.3%}) - TOO RARE")
+            elif event_rate < 0.05:  # Less than 5%
+                print(f"  ⚠️  {event_col}: {event_count} events ({event_rate:.3%}) - RARE")
+            else:
+                print(f"  ✓  {event_col}: {event_count} events ({event_rate:.3%}) - OK")
+
+    if rare_events:
+        print(f"\nFound {len(rare_events)} rare events that may have insufficient data for analysis")
+
+    # Check for feature diversity
+    numeric_cols = data.select_dtypes(include=[np.number]).columns
+    feature_candidates = [col for col in numeric_cols if col not in existing_events]
+
+    print(f"\nFeature analysis:")
+    print(f"  Total numeric columns: {len(numeric_cols)}")
+    print(f"  Feature candidates: {len(feature_candidates)}")
+
+    # Check for constant or near-constant features
+    low_variance_features = []
+    for col in feature_candidates[:20]:  # Check first 20 features
+        if data[col].var() < 1e-10:
+            low_variance_features.append(col)
+
+    if low_variance_features:
+        print(f"  ⚠️  Found {len(low_variance_features)} near-constant features")
+
+    # Memory and performance estimates
+    total_tests = len(feature_candidates) * len(existing_events)
+    print(f"\nPerformance estimates:")
+    print(f"  Total possible tests: {total_tests:,}")
+    print(f"  Estimated runtime: {total_tests / 10000:.1f} - {total_tests / 5000:.1f} minutes")
+
+    # Recommendations
+    print(f"\nRecommendations:")
+    if len(rare_events) > len(existing_events) // 2:
+        print(f"  • Consider using significance_level=0.15 (more lenient)")
+        print(f"  • Reduce min_samples_per_event to 25")
+
+    if total_tests > 50000:
+        print(f"  • Consider pre-filtering features by correlation first")
+        print(f"  • Focus on most important event types initially")
+
+    print(f"  • Use enable_spectral_methods=True for large datasets")
+    print(f"  • Consider running on a subset first to test")
+
+
+def get_all_event_columns(data: pd.DataFrame) -> List[str]:
+    """Automatically detect all event columns including co-events"""
+
+    # Individual events
+    individual_events = [col for col in data.columns if col.endswith('_event')]
+
+    # Co-events
+    covent_columns = [col for col in data.columns if 'covent' in col.lower()]
+
+    # Confluence patterns
+    confluence_columns = [col for col in data.columns if 'confluence' in col.lower()]
+
+    # BB events
+    bb_events = [col for col in data.columns if
+                 col.startswith('BB_') and ('cross' in col or 'squeeze' in col or 'expansion' in col)]
+
+    # CUSUM events
+    cusum_events = [col for col in data.columns if 'CUSUM' in col and col != 'CUSUM_pos' and col != 'CUSUM_neg']
+
+    # Combine all
+    all_events = list(set(individual_events + covent_columns + confluence_columns + bb_events + cusum_events))
+
+    return [col for col in all_events if data[col].dtype == 'bool' or data[col].nunique() == 2]
+
+
+def discover_most_predictable_covents(res: pd.DataFrame):
+    """
+    Identify which types of co-events are most predictable
+    """
+
+    covent_results = res[res['event'].str.contains('covent|confluence')]
+
+    if len(covent_results) == 0:
+        return
+
+    predictability_ranking = covent_results.groupby('event').agg({
+        'is_significant_corrected': 'sum',
+        'granger_pvalue_corrected': 'min',
+        'granger_fstatistic': 'max'
+    }).sort_values('is_significant_corrected', ascending=False)
+
+    print(f"\nMOST PREDICTABLE CO-EVENTS:")
+    for event, stats in predictability_ranking.head(10).iterrows():
+        print(f"{event}: {int(stats['is_significant_corrected'])} predictors, "
+              f"best p={stats['granger_pvalue_corrected']:.4f}")
+
+
+def print_covent_analysis(data):
+    """
+    Specialized output for co-event analysis
+    """
+
+    # Separate individual events from co-events
+    individual_results = data[~data['event'].str.contains('covent|confluence')]
+    covent_results = data[data['event'].str.contains('covent')]
+    confluence_results = data[data['event'].str.contains('confluence')]
+
+    print(f"\n{'=' * 80}")
+    print("CO-EVENT CAUSATION ANALYSIS")
+    print(f"{'=' * 80}")
+
+    print(f"Individual Events: {len(individual_results)} relationships found")
+    print(f"2-way/3-way Co-events: {len(covent_results)} relationships found")
+    print(f"Confluence Patterns: {len(confluence_results)} relationships found")
+
+    # Compare predictability
+    if len(covent_results) > 0:
+        print(f"\nCO-EVENT PREDICTABILITY:")
+        covent_summary = covent_results.groupby('event').agg({
+            'granger_pvalue_corrected': ['min', 'mean', 'count'],
+            'granger_fstatistic': 'max',
+            'optimal_lag': 'mean'
+        }).round(4)
+
+        for event in covent_summary.index:
+            event_data = covent_summary.loc[event]
+            sig_count = covent_results[(covent_results['event'] == event) &
+                                       (covent_results['is_significant_corrected'])].shape[0]
+
+            print(f"\n{event}:")
+            print(f"  Significant predictors: {sig_count}")
+            print(f"  Best p-value: {event_data[('granger_pvalue_corrected', 'min')]:.6f}")
+            print(f"  Average lag: {event_data[('optimal_lag', 'mean')]:.1f}")
+            print(f"  Strongest F-stat: {event_data[('granger_fstatistic', 'max')]:.2f}")
+
+
 if __name__ == "__main__":
     print("Optimized Causation Research Script Loaded")
     print("Use example_usage_with_data(your_dataframe) to test with your data")
-    indicated = pd.read_pickle('D:/Seagull_data/labeled5mEE2cov.pkl')
-    results = example_usage_with_data(indicated)
-    print(results)
 
-    # Or customize the analysis
-    # results = run_optimized_causation_analysis(
-    #     data=indicated,
-    #     event_columns=['CUSUM_event', 'BB_any_cross', 'momentum_regime_event'],
-    #     config={'significance_level': 0.01, 'max_lag': 10}
-    # )
+    indicated = pd.read_pickle('D:/Seagull_data/labeled5mEE2cov.pkl')
+
+    # Run diagnostics first
+    event_columns = get_all_event_columns(indicated)
+    diagnose_data_issues(indicated, event_columns)
+
+    # Then run full analysis
+    results = example_usage_with_data(indicated)
+    print_covent_analysis(results)
+    discover_most_predictable_covents(results)
+
+    # Print final summary
+    if len(results) > 0:
+        print(f"\n🎉 SUCCESS: Found {len(results)} relationships!")
+        print(f"📊 {results['is_significant_corrected'].sum()} are significant after correction")
+    else:
+        print(f"\n❌ No relationships found. Check diagnostic report above.")
