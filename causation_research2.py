@@ -1032,3 +1032,116 @@ if __name__ == "__main__":
         print(f"📊 {results['is_significant_corrected'].sum()} are significant after correction")
     else:
         print(f"\n❌ No relationships found. Check diagnostic report above.")
+
+# C:\Users\themi\PycharmProjects\Seagull_2\.venv\Scripts\python.exe C:\Users\themi\PycharmProjects\Seagull_2\causation_research2.py
+# Optimized Causation Research Script Loaded
+# Use example_usage_with_data(your_dataframe) to test with your data
+#
+# ============================================================
+# DATA DIAGNOSTIC REPORT
+# ============================================================
+# Event frequency analysis:
+#   ⚠️  covent_2way_CUSUM_BB_upper_cross: 1200 events (0.202%) - TOO RARE
+#   ✓  traditional_event: 250896 events (42.166%) - OK
+#   ✓  BB_expansion: 201935 events (33.937%) - OK
+#   ⚠️  BB_any_cross: 13794 events (2.318%) - RARE
+#   ⚠️  CUSUM_event: 2032 events (0.341%) - TOO RARE
+#   ✓  any_2way_covent_label: 98440.0 events (36.010%) - OK
+#   ✓  any_2way_covent: 273369 events (45.942%) - OK
+#   ✓  outlier_event: 35591 events (5.981%) - OK
+#   ✓  CUSUM_event_label: 763.0 events (37.549%) - OK
+#   ⚠️  BB_lower_cross: 593 events (0.100%) - TOO RARE
+#   ⚠️  BB_upper_cross: 500 events (0.084%) - TOO RARE
+#   ⚠️  vpd_volatility_event: 721 events (0.121%) - TOO RARE
+#   ✓  covent_2way_CUSUM_BB_lower_cross_label: 538.0 events (35.279%) - OK
+#   ⚠️  BB_middle_cross_up: 6388 events (1.074%) - RARE
+#   ✓  covent_2way_vpd_volatility_momentum_regime_label: 176.0 events (44.000%) - OK
+#   ✓  momentum_regime_event: 231363 events (38.883%) - OK
+#   ✓  covent_2way_momentum_regime_BB_squeeze: 188575 events (31.692%) - OK
+#   ✓  covent_2way_CUSUM_BB_upper_cross_label: 542.0 events (45.167%) - OK
+#   ✓  count_2way_covent_label: 96032.0 events (36.006%) - OK
+#   ⚠️  covent_2way_CUSUM_BB_lower_cross: 1525 events (0.256%) - TOO RARE
+#   ✓  covent_2way_momentum_regime_BB_squeeze_label: 68104.0 events (36.115%) - OK
+#   ✓  covent_2way_outlier_BB_expansion_label: 31579.0 events (35.642%) - OK
+#   ✓  covent_2way_outlier_BB_expansion: 88600 events (14.890%) - OK
+#   ✓  any_event: 493248 events (82.895%) - OK
+#   ⚠️  covent_2way_vpd_volatility_momentum_regime: 400 events (0.067%) - TOO RARE
+#   ✓  BB_squeeze: 224733 events (37.769%) - OK
+#   ⚠️  BB_middle_cross_down: 6389 events (1.074%) - RARE
+#
+# Found 7 rare events that may have insufficient data for analysis
+#
+# Feature analysis:
+#   Total numeric columns: 127
+#   Feature candidates: 119
+#
+# Performance estimates:
+#   Total possible tests: 3,213
+#   Estimated runtime: 0.3 - 0.6 minutes
+#
+# Recommendations:
+#   • Use enable_spectral_methods=True for large datasets
+#   • Consider running on a subset first to test
+# Found 10 event columns and 122 feature columns
+#
+# ============================================================
+# DATA QUALITY OVERVIEW
+# ============================================================
+# Sample size: 595,026 observations
+# Time range: 2020-01-03 08:00:00 to 2025-08-31 23:55:00
+#
+# Event frequencies:
+#   vpd_volatility_event     :    721 events ( 0.12% rate)
+#   outlier_event            : 35,591 events ( 5.98% rate)
+#   momentum_regime_event    : 231,363 events (38.88% rate)
+#   CUSUM_event              :  2,032 events ( 0.34% rate)
+#   BB_upper_cross           :    500 events ( 0.08% rate)
+#   BB_lower_cross           :    593 events ( 0.10% rate)
+#   BB_any_cross             : 13,794 events ( 2.32% rate)
+#   BB_squeeze               : 224,733 events (37.77% rate)
+#   BB_expansion             : 201,935 events (33.94% rate)
+#   any_event                : 493,248 events (82.90% rate)
+#
+# Configuration: significance_level=0.15, max_lag=12
+# Starting optimized causation analysis...
+# Dataset shape: (595026, 172)
+# Testing 122 features against 10 events
+# Data preparation: 595026 -> 594879 rows after cleaning
+# Phase 1: Statistical pre-screening...
+# Pre-screening reduced candidates from 1220 to 90
+# Phase 2: Efficient stationarity testing...
+# Phase 3: Optimized causality testing...
+#
+# Analysis completed in 2742.76 seconds
+#
+# ==================================================
+# PERFORMANCE SUMMARY
+# ==================================================
+# Prescreening        : 2731.63s ( 99.8%)
+# Stationarity        :   6.10s (  0.2%)
+# Granger_testing     :   0.00s (  0.0%)
+# Total Time          : 2737.73s
+# ==================================================
+#
+# ============================================================
+# CAUSATION ANALYSIS RESULTS
+# ============================================================
+# Total relationships tested: 1,220
+# Relationships found: 0
+#
+# ⚠️  No relationships found!
+# Possible reasons:
+#   • Multiple testing correction too strict
+#   • Events too rare in the data
+#   • Time series relationships genuinely weak
+#   • Need different lag periods or methods
+#   • Stationarity requirements too strict
+#
+# Diagnostic suggestions:
+#   • Try significance_level=0.15 for more lenient testing
+#   • Reduce min_samples_per_event to 25
+#   • Check if events have sufficient variation
+#
+# ❌ No relationships found. Check diagnostic report above.
+#
+# Process finished with exit code 0

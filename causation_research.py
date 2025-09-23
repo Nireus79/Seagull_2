@@ -6,8 +6,8 @@ import warnings
 from pathlib import Path
 import json
 from datetime import datetime, timedelta
-import matplotlib.pyplot as plt
-import seaborn as sns
+# import matplotlib.pyplot as plt
+# import seaborn as sns
 from scipy import stats
 from scipy.stats import chi2
 import itertools
@@ -1168,3 +1168,216 @@ if __name__ == "__main__":
     print("    labeled_data='your_data.pkl',")
     print("    max_time_minutes=30")
     print(")")
+
+# C:\Users\themi\PycharmProjects\Seagull_2\.venv\Scripts\python.exe C:\Users\themi\PycharmProjects\Seagull_2\causation_research.py
+# Event-Specific Causal Financial Research System
+# ==================================================
+# 🎯 NEW APPROACH: Research only on actual event occurrences
+# ✅ ELIMINATES: Artificial events from forward filling
+# 🔬 ENSURES: True causal relationships
+#
+# 🚀 Example Usage:
+# Identified column types:
+#   Event columns: 12
+#   Label columns: 13
+#   Technical indicator columns: 85
+# Forward filled 85 technical indicator columns
+# Data shape after cleaning: (595026, 172)
+# Preserved event sparsity - events remain NaN when not occurring
+# Event column analysis:
+# CUSUM_event: 2032 events (0.341% of data)
+# vpd_volatility_event: 721 events (0.121% of data)
+# outlier_event: 35591 events (5.981% of data)
+# momentum_regime_event: 231363 events (38.883% of data)
+# traditional_event: 250896 events (42.166% of data)
+#
+# Label distributions:
+# CUSUM_event_label: {0.0: 1269, 1.0: 763}
+# vpd_volatility_event_label: {0.0: 407, 1.0: 314}
+# outlier_event_label: {0.0: 22778, 1.0: 12813}
+# momentum_regime_event_label: {0.0: 148347, 1.0: 83016}
+# traditional_event_label: {0.0: 160753, 1.0: 90143}
+#
+# Feature statistics:
+# Technical indicators: 85
+# 2025-09-23 07:20:21,182 - CAUSAL_AGENT - INFO - Data cleaned for causality: (595026, 172)
+# 2025-09-23 07:20:21,182 - CAUSAL_AGENT - INFO - Causal Financial Research Agent initialized
+# 2025-09-23 07:20:21,182 - CAUSAL_AGENT - INFO - Detected 13 event types
+# 2025-09-23 07:20:21,182 - CAUSAL_AGENT - INFO - Available features: 85
+# 2025-09-23 07:20:21,182 - CAUSAL_AGENT - INFO -
+# 🚀 COMPREHENSIVE EVENT-SPECIFIC CAUSAL RESEARCH
+# 2025-09-23 07:20:21,182 - CAUSAL_AGENT - INFO - Time budget: 240 minutes
+# 2025-09-23 07:20:21,183 - CAUSAL_AGENT - INFO -
+# [1/13] Researching: CUSUM_event_label
+# 2025-09-23 07:20:21,183 - CAUSAL_AGENT - INFO - ⏱️  Remaining time: 240.0 minutes
+# 2025-09-23 07:20:21,183 - CAUSAL_AGENT - INFO -
+# 🔬 CAUSAL RESEARCH: CUSUM_event_label
+# 2025-09-23 07:20:21,188 - CAUSAL_AGENT - INFO - 📅 Found 2032 occurrences of CUSUM_event
+# Average feature completeness: 99.8%
+# Testing 50 features for causality
+# 2025-09-23 07:20:21,222 - CAUSAL_AGENT - INFO - 📊 Event-specific data prepared: 2032 samples, 83 features
+# 2025-09-23 07:20:24,247 - CAUSAL_AGENT - INFO - ✅ Discovered 15 causal relationships
+# 2025-09-23 07:20:24,627 - CAUSAL_AGENT - INFO -
+# [2/13] Researching: vpd_volatility_event_label
+# 2025-09-23 07:20:24,627 - CAUSAL_AGENT - INFO - ⏱️  Remaining time: 239.9 minutes
+# 2025-09-23 07:20:24,627 - CAUSAL_AGENT - INFO -
+# 🔬 CAUSAL RESEARCH: vpd_volatility_event_label
+# 2025-09-23 07:20:24,630 - CAUSAL_AGENT - INFO - 📅 Found 721 occurrences of vpd_volatility_event
+# Testing 50 features for causality
+# 2025-09-23 07:20:24,638 - CAUSAL_AGENT - INFO - 📊 Event-specific data prepared: 721 samples, 84 features
+# 2025-09-23 07:20:26,545 - CAUSAL_AGENT - INFO - ✅ Discovered 10 causal relationships
+# 2025-09-23 07:20:26,799 - CAUSAL_AGENT - INFO -
+# [3/13] Researching: outlier_event_label
+# 2025-09-23 07:20:26,800 - CAUSAL_AGENT - INFO - ⏱️  Remaining time: 239.9 minutes
+# 2025-09-23 07:20:26,800 - CAUSAL_AGENT - INFO -
+# 🔬 CAUSAL RESEARCH: outlier_event_label
+# 2025-09-23 07:20:26,803 - CAUSAL_AGENT - INFO - 📅 Found 35591 occurrences of outlier_event
+# Testing 50 features for causality
+# 2025-09-23 07:20:27,008 - CAUSAL_AGENT - INFO - 📊 Event-specific data prepared: 35591 samples, 85 features
+# 2025-09-23 07:20:51,860 - CAUSAL_AGENT - INFO - ✅ Discovered 15 causal relationships
+# 2025-09-23 07:20:52,422 - CAUSAL_AGENT - INFO -
+# [4/13] Researching: momentum_regime_event_label
+# 2025-09-23 07:20:52,422 - CAUSAL_AGENT - INFO - ⏱️  Remaining time: 239.5 minutes
+# 2025-09-23 07:20:52,422 - CAUSAL_AGENT - INFO -
+# 🔬 CAUSAL RESEARCH: momentum_regime_event_label
+# 2025-09-23 07:20:52,425 - CAUSAL_AGENT - INFO - 📅 Found 231363 occurrences of momentum_regime_event
+# Testing 50 features for causality
+# 2025-09-23 07:20:53,561 - CAUSAL_AGENT - INFO - 📊 Event-specific data prepared: 231363 samples, 85 features
+# 2025-09-23 07:23:20,172 - CAUSAL_AGENT - INFO - ✅ Discovered 15 causal relationships
+# 2025-09-23 07:23:22,194 - CAUSAL_AGENT - INFO -
+# [5/13] Researching: traditional_event_label
+# 2025-09-23 07:23:22,194 - CAUSAL_AGENT - INFO - ⏱️  Remaining time: 237.0 minutes
+# 2025-09-23 07:23:22,194 - CAUSAL_AGENT - INFO -
+# 🔬 CAUSAL RESEARCH: traditional_event_label
+# 2025-09-23 07:23:22,197 - CAUSAL_AGENT - INFO - 📅 Found 250896 occurrences of traditional_event
+# Testing 50 features for causality
+# 2025-09-23 07:23:23,452 - CAUSAL_AGENT - INFO - 📊 Event-specific data prepared: 250896 samples, 85 features
+# 2025-09-23 07:26:03,398 - CAUSAL_AGENT - INFO - ✅ Discovered 15 causal relationships
+# 2025-09-23 07:26:05,653 - CAUSAL_AGENT - INFO -
+# [6/13] Researching: any_event_label
+# 2025-09-23 07:26:05,653 - CAUSAL_AGENT - INFO - ⏱️  Remaining time: 234.3 minutes
+# 2025-09-23 07:26:05,653 - CAUSAL_AGENT - INFO -
+# 🔬 CAUSAL RESEARCH: any_event_label
+# 2025-09-23 07:26:05,656 - CAUSAL_AGENT - INFO - 📅 Found 493248 occurrences of any_event
+# 2025-09-23 07:26:08,199 - CAUSAL_AGENT - INFO - 📊 Event-specific data prepared: 493248 samples, 85 features
+# Testing 50 features for causality
+# 2025-09-23 07:31:26,571 - CAUSAL_AGENT - INFO - ✅ Discovered 15 causal relationships
+# 2025-09-23 07:31:30,601 - CAUSAL_AGENT - INFO -
+# [7/13] Researching: covent_2way_CUSUM_BB_upper_cross_label
+# 2025-09-23 07:31:30,601 - CAUSAL_AGENT - INFO - ⏱️  Remaining time: 228.8 minutes
+# 2025-09-23 07:31:30,602 - CAUSAL_AGENT - INFO -
+# 🔬 CAUSAL RESEARCH: covent_2way_CUSUM_BB_upper_cross_label
+# 2025-09-23 07:31:30,605 - CAUSAL_AGENT - INFO - 📅 Found 1200 occurrences of covent_2way_CUSUM_BB_upper_cross
+# 2025-09-23 07:31:30,616 - CAUSAL_AGENT - INFO - 📊 Event-specific data prepared: 1200 samples, 84 features
+# Testing 50 features for causality
+# 2025-09-23 07:31:32,446 - CAUSAL_AGENT - INFO - ✅ Discovered 15 causal relationships
+# 2025-09-23 07:31:32,786 - CAUSAL_AGENT - INFO -
+# [8/13] Researching: covent_2way_CUSUM_BB_lower_cross_label
+# 2025-09-23 07:31:32,786 - CAUSAL_AGENT - INFO - ⏱️  Remaining time: 228.8 minutes
+# 2025-09-23 07:31:32,786 - CAUSAL_AGENT - INFO -
+# 🔬 CAUSAL RESEARCH: covent_2way_CUSUM_BB_lower_cross_label
+# 2025-09-23 07:31:32,789 - CAUSAL_AGENT - INFO - 📅 Found 1525 occurrences of covent_2way_CUSUM_BB_lower_cross
+# Testing 50 features for causality
+# 2025-09-23 07:31:32,800 - CAUSAL_AGENT - INFO - 📊 Event-specific data prepared: 1525 samples, 85 features
+# 2025-09-23 07:31:34,788 - CAUSAL_AGENT - INFO - ✅ Discovered 15 causal relationships
+# 2025-09-23 07:31:35,151 - CAUSAL_AGENT - INFO -
+# [9/13] Researching: covent_2way_vpd_volatility_momentum_regime_label
+# 2025-09-23 07:31:35,151 - CAUSAL_AGENT - INFO - ⏱️  Remaining time: 228.8 minutes
+# 2025-09-23 07:31:35,151 - CAUSAL_AGENT - INFO -
+# 🔬 CAUSAL RESEARCH: covent_2way_vpd_volatility_momentum_regime_label
+# 2025-09-23 07:31:35,153 - CAUSAL_AGENT - INFO - 📅 Found 400 occurrences of covent_2way_vpd_volatility_momentum_regime
+# 2025-09-23 07:31:35,158 - CAUSAL_AGENT - INFO - 📊 Event-specific data prepared: 400 samples, 84 features
+# Testing 50 features for causality
+# 2025-09-23 07:31:36,573 - CAUSAL_AGENT - INFO - ✅ Discovered 1 causal relationships
+# 2025-09-23 07:31:36,595 - CAUSAL_AGENT - INFO -
+# [10/13] Researching: covent_2way_outlier_BB_expansion_label
+# 2025-09-23 07:31:36,595 - CAUSAL_AGENT - INFO - ⏱️  Remaining time: 228.7 minutes
+# 2025-09-23 07:31:36,595 - CAUSAL_AGENT - INFO -
+# 🔬 CAUSAL RESEARCH: covent_2way_outlier_BB_expansion_label
+# 2025-09-23 07:31:36,597 - CAUSAL_AGENT - INFO - 📅 Found 88600 occurrences of covent_2way_outlier_BB_expansion
+# Testing 50 features for causality
+# 2025-09-23 07:31:37,101 - CAUSAL_AGENT - INFO - 📊 Event-specific data prepared: 88600 samples, 85 features
+# 2025-09-23 07:32:29,684 - CAUSAL_AGENT - INFO - ✅ Discovered 15 causal relationships
+# 2025-09-23 07:32:30,578 - CAUSAL_AGENT - INFO -
+# [11/13] Researching: covent_2way_momentum_regime_BB_squeeze_label
+# 2025-09-23 07:32:30,578 - CAUSAL_AGENT - INFO - ⏱️  Remaining time: 227.8 minutes
+# 2025-09-23 07:32:30,578 - CAUSAL_AGENT - INFO -
+# 🔬 CAUSAL RESEARCH: covent_2way_momentum_regime_BB_squeeze_label
+# 2025-09-23 07:32:30,582 - CAUSAL_AGENT - INFO - 📅 Found 188575 occurrences of covent_2way_momentum_regime_BB_squeeze
+# Testing 50 features for causality
+# 2025-09-23 07:32:31,540 - CAUSAL_AGENT - INFO - 📊 Event-specific data prepared: 188575 samples, 85 features
+# 2025-09-23 07:34:30,086 - CAUSAL_AGENT - INFO - ✅ Discovered 15 causal relationships
+# 2025-09-23 07:34:31,718 - CAUSAL_AGENT - INFO -
+# [12/13] Researching: any_2way_covent_label
+# 2025-09-23 07:34:31,718 - CAUSAL_AGENT - INFO - ⏱️  Remaining time: 225.8 minutes
+# 2025-09-23 07:34:31,718 - CAUSAL_AGENT - INFO -
+# 🔬 CAUSAL RESEARCH: any_2way_covent_label
+# 2025-09-23 07:34:31,720 - CAUSAL_AGENT - INFO - 📅 Found 273369 occurrences of any_2way_covent
+# 2025-09-23 07:34:33,053 - CAUSAL_AGENT - INFO - 📊 Event-specific data prepared: 273369 samples, 85 features
+# Testing 50 features for causality
+# 2025-09-23 07:37:27,770 - CAUSAL_AGENT - INFO - ✅ Discovered 15 causal relationships
+# 2025-09-23 07:37:30,061 - CAUSAL_AGENT - INFO -
+# [13/13] Researching: count_2way_covent_label
+# 2025-09-23 07:37:30,062 - CAUSAL_AGENT - INFO - ⏱️  Remaining time: 222.9 minutes
+# 2025-09-23 07:37:30,062 - CAUSAL_AGENT - INFO -
+# 🔬 CAUSAL RESEARCH: count_2way_covent_label
+# 2025-09-23 07:37:30,064 - CAUSAL_AGENT - INFO - 📅 Found 266713 occurrences of count_2way_covent
+# 2025-09-23 07:37:31,399 - CAUSAL_AGENT - INFO - 📊 Event-specific data prepared: 266713 samples, 84 features
+# Testing 50 features for causality
+# 2025-09-23 07:40:18,498 - CAUSAL_AGENT - INFO - ✅ Discovered 15 causal relationships
+#
+# ================================================================================
+# 🔬 EVENT-SPECIFIC CAUSAL FINANCIAL RESEARCH SUMMARY
+# ================================================================================
+# 📊 Research Statistics:
+#    • Events attempted: 13
+#    • Successful research: 13
+#    • Success rate: 100.0%
+#    • Duration: 20.0 minutes
+#
+# 🎯 Research Approach: Filter to actual event occurrences only
+#
+# 🔍 Causal Analysis:
+#    • Relationships discovered: 176
+#    • Average causal strength: 0.990
+#
+# 📅 Event Analysis:
+#    • CUSUM_event_label: 2032 occurrences (0.341%), 15 causal features
+#    • vpd_volatility_event_label: 721 occurrences (0.121%), 10 causal features
+#    • outlier_event_label: 35591 occurrences (5.981%), 15 causal features
+#    • momentum_regime_event_label: 231363 occurrences (38.883%), 15 causal features
+#    • traditional_event_label: 250896 occurrences (42.166%), 15 causal features
+#
+# 📋 Recommendations:
+#    1. ✅ EVENT-SPECIFIC APPROACH: Research focuses only on actual event occurrences
+#    2. ✅ DATA INTEGRITY: No artificial events created by forward filling
+#    3. Strong causal relationships detected - focus on real-time event detection
+#    4. Validate causal relationships on out-of-sample event occurrences
+#    5. Develop real-time event detection system to trigger predictions
+#
+# 🔬 DEEP EVENT-SPECIFIC CAUSAL RESEARCH ADDITIONAL ANALYSIS
+# ============================================================
+# 📊 Discovered Economic Mechanisms (by performance):
+#    • information_asymmetry: 0.002 avg performance
+#
+# 🧠 Knowledge Base:
+#    • Total causal relationships stored: 176
+# ✅ Research completed successfully!
+#
+# ============================================================
+# 📖 USAGE EXAMPLES
+# ============================================================
+#
+# 🔬 For Deep Event-Specific Causal Research:
+# results = deep_event_causal_research(
+#     labeled_data='D:/Seagull_data/labeled5mEE2cov.pkl',
+#     max_time_minutes=120
+# )
+#
+# 🎯 For Quick Event-Specific Research:
+# results = quick_event_causal_research(
+#     labeled_data='your_data.pkl',
+#     max_time_minutes=30
+# )
+#
+# Process finished with exit code 0
