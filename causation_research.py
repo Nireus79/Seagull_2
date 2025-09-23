@@ -1364,20 +1364,1603 @@ if __name__ == "__main__":
 #    • Total causal relationships stored: 176
 # ✅ Research completed successfully!
 #
+# OVERALL STATISTICS:
+# Total events researched: 13
+# Total relationships found: 176
+# Average causal strength: 0.9896325955889383
+#
 # ============================================================
-# 📖 USAGE EXAMPLES
+# DETAILED CAUSAL RELATIONSHIPS BY EVENT
 # ============================================================
 #
-# 🔬 For Deep Event-Specific Causal Research:
-# results = deep_event_causal_research(
-#     labeled_data='D:/Seagull_data/labeled5mEE2cov.pkl',
-#     max_time_minutes=120
-# )
+# 🎯 EVENT: CUSUM_event_label
+# --------------------------------------------------
+# Occurrences: 2032
+# Frequency: 0.0034
 #
-# 🎯 For Quick Event-Specific Research:
-# results = quick_event_causal_research(
-#     labeled_data='your_data.pkl',
-#     max_time_minutes=30
-# )
+# CAUSAL RELATIONSHIPS FOUND: 15
 #
-# Process finished with exit code 0
+# Top Causal Features:
+#    1. CUSUM_direction
+#       Strength: 1.0000 | P-value: 0.000018
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    2. returns
+#       Strength: 1.0000 | P-value: 0.000048
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+#    3. EMA_fast_distance_pct
+#       Strength: 0.9997 | P-value: 0.000291
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    4. EMA_medium_distance_pct
+#       Strength: 0.9993 | P-value: 0.000741
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    5. 30min_Close
+#       Strength: 0.9989 | P-value: 0.001099
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    6. EMA_slow_distance_pct
+#       Strength: 0.9982 | P-value: 0.001771
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    7. BB_position
+#       Strength: 0.9936 | P-value: 0.006351
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    8. RSI
+#       Strength: 0.9936 | P-value: 0.006441
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+#    9. 4H_Volume
+#       Strength: 0.9824 | P-value: 0.017550
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#   10. 30min_High
+#       Strength: 0.9791 | P-value: 0.020901
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+# VALIDATION RESULTS:
+#   CUSUM_direction→CUSUM_event_label_1.000:
+#     AUC-ROC: 0.5204
+#     Sharpe Ratio: 1.2245
+#     Total Return: 0.0061
+#   returns→CUSUM_event_label_1.000:
+#     AUC-ROC: 0.5207
+#     Sharpe Ratio: 0.9231
+#     Total Return: 0.0062
+#   EMA_fast_distance_pct→CUSUM_event_label_1.000:
+#     AUC-ROC: 0.5478
+#     Sharpe Ratio: 2.2507
+#     Total Return: 0.0143
+#   EMA_medium_distance_pct→CUSUM_event_label_0.999:
+#     AUC-ROC: 0.5496
+#     Sharpe Ratio: 2.1008
+#     Total Return: 0.0149
+#   30min_Close→CUSUM_event_label_0.999:
+#     AUC-ROC: 0.5018
+#     Sharpe Ratio: 0.0879
+#     Total Return: 0.0005
+#   EMA_slow_distance_pct→CUSUM_event_label_0.998:
+#     AUC-ROC: 0.5470
+#     Sharpe Ratio: 2.0034
+#     Total Return: 0.0141
+#   BB_position→CUSUM_event_label_0.994:
+#     AUC-ROC: 0.5523
+#     Sharpe Ratio: 2.8883
+#     Total Return: 0.0157
+#   RSI→CUSUM_event_label_0.994:
+#     AUC-ROC: 0.5494
+#     Sharpe Ratio: 1.8066
+#     Total Return: 0.0148
+#   4H_Volume→CUSUM_event_label_0.982:
+#     AUC-ROC: 0.4946
+#     Sharpe Ratio: -0.2399
+#     Total Return: -0.0016
+#   30min_High→CUSUM_event_label_0.979:
+#     AUC-ROC: 0.5030
+#     Sharpe Ratio: 0.1486
+#     Total Return: 0.0009
+#   MACD_histogram→CUSUM_event_label_0.979:
+#     AUC-ROC: 0.5324
+#     Sharpe Ratio: 0.8930
+#     Total Return: 0.0097
+#   30min_Low→CUSUM_event_label_0.976:
+#     AUC-ROC: 0.5011
+#     Sharpe Ratio: 0.0537
+#     Total Return: 0.0003
+#   1D_Low→CUSUM_event_label_0.967:
+#     AUC-ROC: 0.5091
+#     Sharpe Ratio: 0.5806
+#     Total Return: 0.0027
+#   ATR→CUSUM_event_label_0.957:
+#     AUC-ROC: 0.5000
+#     Sharpe Ratio: 0.0000
+#     Total Return: 0.0000
+#   1D_Open→CUSUM_event_label_0.949:
+#     AUC-ROC: 0.5067
+#     Sharpe Ratio: 0.5525
+#     Total Return: 0.0020
+#
+# --------------------------------------------------
+#
+# 🎯 EVENT: vpd_volatility_event_label
+# --------------------------------------------------
+# Occurrences: 721
+# Frequency: 0.0012
+#
+# CAUSAL RELATIONSHIPS FOUND: 10
+#
+# Top Causal Features:
+#    1. Volume_SMA
+#       Strength: 0.9990 | P-value: 0.001050
+#       Mechanism: information_asymmetry
+#       Justification: Supported by order_flow_impact mechanism: Order flow directly impacts prices through market mechanics
+#
+#    2. 4H_Volume
+#       Strength: 0.9987 | P-value: 0.001290
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    3. CUSUM_pos
+#       Strength: 0.9926 | P-value: 0.007436
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    4. 1D_Volume
+#       Strength: 0.9670 | P-value: 0.033006
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    5. CUSUM_neg
+#       Strength: 0.9614 | P-value: 0.038629
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    6. 4H_Low
+#       Strength: 0.9466 | P-value: 0.053362
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    7. 30min_Close
+#       Strength: 0.9370 | P-value: 0.062990
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    8. EMA_slow_distance_atr
+#       Strength: 0.9281 | P-value: 0.071856
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    9. EMA_medium_26
+#       Strength: 0.9069 | P-value: 0.093121
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#   10. 30min_Low
+#       Strength: 0.9012 | P-value: 0.098838
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+# VALIDATION RESULTS:
+#   Volume_SMA→vpd_volatility_event_label_0.999:
+#     AUC-ROC: 0.5044
+#     Sharpe Ratio: 0.0483
+#     Total Return: 0.0013
+#   4H_Volume→vpd_volatility_event_label_0.999:
+#     AUC-ROC: 0.5056
+#     Sharpe Ratio: 0.0620
+#     Total Return: 0.0017
+#   CUSUM_pos→vpd_volatility_event_label_0.993:
+#     AUC-ROC: 0.5017
+#     Sharpe Ratio: 0.0317
+#     Total Return: 0.0005
+#   1D_Volume→vpd_volatility_event_label_0.967:
+#     AUC-ROC: 0.6105
+#     Sharpe Ratio: 1.8089
+#     Total Return: 0.0332
+#   CUSUM_neg→vpd_volatility_event_label_0.961:
+#     AUC-ROC: 0.5101
+#     Sharpe Ratio: 1.1954
+#     Total Return: 0.0030
+#   4H_Low→vpd_volatility_event_label_0.947:
+#     AUC-ROC: 0.5497
+#     Sharpe Ratio: 0.4168
+#     Total Return: 0.0149
+#   30min_Close→vpd_volatility_event_label_0.937:
+#     AUC-ROC: 0.6202
+#     Sharpe Ratio: 1.0857
+#     Total Return: 0.0361
+#   EMA_slow_distance_atr→vpd_volatility_event_label_0.928:
+#     AUC-ROC: 0.5862
+#     Sharpe Ratio: 1.1777
+#     Total Return: 0.0258
+#   EMA_medium_26→vpd_volatility_event_label_0.907:
+#     AUC-ROC: 0.5577
+#     Sharpe Ratio: 0.5567
+#     Total Return: 0.0173
+#   30min_Low→vpd_volatility_event_label_0.901:
+#     AUC-ROC: 0.6242
+#     Sharpe Ratio: 1.1321
+#     Total Return: 0.0373
+#
+# --------------------------------------------------
+#
+# 🎯 EVENT: outlier_event_label
+# --------------------------------------------------
+# Occurrences: 35591
+# Frequency: 0.0598
+#
+# CAUSAL RELATIONSHIPS FOUND: 15
+#
+# Top Causal Features:
+#    1. 30min_High
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    2. 30min_Low
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    3. 30min_Close
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    4. MACD
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    5. MACD_histogram
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    6. RSI
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+#    7. CUSUM_pos
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    8. CUSUM_neg
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    9. returns
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+#   10. EMA_fast_distance_pct
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+# VALIDATION RESULTS:
+#   30min_High→outlier_event_label_1.000:
+#     AUC-ROC: 0.5046
+#     Sharpe Ratio: 0.2866
+#     Total Return: 0.0014
+#   30min_Low→outlier_event_label_1.000:
+#     AUC-ROC: 0.5051
+#     Sharpe Ratio: 0.3275
+#     Total Return: 0.0015
+#   30min_Close→outlier_event_label_1.000:
+#     AUC-ROC: 0.5049
+#     Sharpe Ratio: 0.3132
+#     Total Return: 0.0015
+#   MACD→outlier_event_label_1.000:
+#     AUC-ROC: 0.5159
+#     Sharpe Ratio: 4.2342
+#     Total Return: 0.0048
+#   MACD_histogram→outlier_event_label_1.000:
+#     AUC-ROC: 0.4880
+#     Sharpe Ratio: -1.6868
+#     Total Return: -0.0036
+#   RSI→outlier_event_label_1.000:
+#     AUC-ROC: 0.5105
+#     Sharpe Ratio: 0.7164
+#     Total Return: 0.0031
+#   CUSUM_pos→outlier_event_label_1.000:
+#     AUC-ROC: 0.5025
+#     Sharpe Ratio: 0.2092
+#     Total Return: 0.0008
+#   CUSUM_neg→outlier_event_label_1.000:
+#     AUC-ROC: 0.5095
+#     Sharpe Ratio: 0.7288
+#     Total Return: 0.0028
+#   returns→outlier_event_label_1.000:
+#     AUC-ROC: 0.4993
+#     Sharpe Ratio: -0.0659
+#     Total Return: -0.0002
+#   EMA_fast_distance_pct→outlier_event_label_1.000:
+#     AUC-ROC: 0.4917
+#     Sharpe Ratio: -0.6036
+#     Total Return: -0.0025
+#   EMA_medium_distance_pct→outlier_event_label_1.000:
+#     AUC-ROC: 0.5088
+#     Sharpe Ratio: 0.6293
+#     Total Return: 0.0026
+#   EMA_slow_distance_pct→outlier_event_label_1.000:
+#     AUC-ROC: 0.5174
+#     Sharpe Ratio: 8.3311
+#     Total Return: 0.0052
+#   BB_position→outlier_event_label_1.000:
+#     AUC-ROC: 0.5060
+#     Sharpe Ratio: 0.4360
+#     Total Return: 0.0018
+#   30min_Open→outlier_event_label_1.000:
+#     AUC-ROC: 0.5048
+#     Sharpe Ratio: 0.2992
+#     Total Return: 0.0014
+#   EMA_fast_12→outlier_event_label_1.000:
+#     AUC-ROC: 0.5052
+#     Sharpe Ratio: 0.3163
+#     Total Return: 0.0015
+#
+# --------------------------------------------------
+#
+# 🎯 EVENT: momentum_regime_event_label
+# --------------------------------------------------
+# Occurrences: 231363
+# Frequency: 0.3888
+#
+# CAUSAL RELATIONSHIPS FOUND: 15
+#
+# Top Causal Features:
+#    1. 30min_Open
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    2. 30min_High
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    3. 30min_Low
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    4. 30min_Close
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    5. EMA_fast_12
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    6. EMA_medium_26
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    7. EMA_slow_50
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    8. MACD
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    9. MACD_signal
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#   10. MACD_histogram
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+# VALIDATION RESULTS:
+#   30min_Open→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5031
+#     Sharpe Ratio: 0.2870
+#     Total Return: 0.0009
+#   30min_High→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5029
+#     Sharpe Ratio: 0.2645
+#     Total Return: 0.0009
+#   30min_Low→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5033
+#     Sharpe Ratio: 0.3137
+#     Total Return: 0.0010
+#   30min_Close→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5031
+#     Sharpe Ratio: 0.2900
+#     Total Return: 0.0009
+#   EMA_fast_12→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5034
+#     Sharpe Ratio: 0.2983
+#     Total Return: 0.0010
+#   EMA_medium_26→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5038
+#     Sharpe Ratio: 0.3372
+#     Total Return: 0.0011
+#   EMA_slow_50→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5042
+#     Sharpe Ratio: 0.3717
+#     Total Return: 0.0013
+#   MACD→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5194
+#     Sharpe Ratio: 3.3653
+#     Total Return: 0.0058
+#   MACD_signal→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5173
+#     Sharpe Ratio: 3.9350
+#     Total Return: 0.0052
+#   MACD_histogram→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.4950
+#     Sharpe Ratio: -0.3635
+#     Total Return: -0.0015
+#   RSI→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5213
+#     Sharpe Ratio: 2.3633
+#     Total Return: 0.0064
+#   EMA_fast_distance_pct→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5155
+#     Sharpe Ratio: 1.2349
+#     Total Return: 0.0047
+#   EMA_medium_distance_pct→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5203
+#     Sharpe Ratio: 2.5691
+#     Total Return: 0.0061
+#   EMA_slow_distance_pct→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5201
+#     Sharpe Ratio: 3.3166
+#     Total Return: 0.0060
+#   BB_position→momentum_regime_event_label_1.000:
+#     AUC-ROC: 0.5038
+#     Sharpe Ratio: 0.1946
+#     Total Return: 0.0011
+#
+# --------------------------------------------------
+#
+# 🎯 EVENT: traditional_event_label
+# --------------------------------------------------
+# Occurrences: 250896
+# Frequency: 0.4217
+#
+# CAUSAL RELATIONSHIPS FOUND: 15
+#
+# Top Causal Features:
+#    1. 30min_High
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    2. 30min_Low
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    3. 30min_Close
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    4. EMA_fast_12
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    5. EMA_medium_26
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    6. MACD
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    7. MACD_histogram
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    8. RSI
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+#    9. CUSUM_pos
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#   10. CUSUM_neg
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+# VALIDATION RESULTS:
+#   30min_High→traditional_event_label_1.000:
+#     AUC-ROC: 0.5032
+#     Sharpe Ratio: 0.2647
+#     Total Return: 0.0009
+#   30min_Low→traditional_event_label_1.000:
+#     AUC-ROC: 0.5036
+#     Sharpe Ratio: 0.3109
+#     Total Return: 0.0011
+#   30min_Close→traditional_event_label_1.000:
+#     AUC-ROC: 0.5034
+#     Sharpe Ratio: 0.2892
+#     Total Return: 0.0010
+#   EMA_fast_12→traditional_event_label_1.000:
+#     AUC-ROC: 0.5036
+#     Sharpe Ratio: 0.2982
+#     Total Return: 0.0011
+#   EMA_medium_26→traditional_event_label_1.000:
+#     AUC-ROC: 0.5040
+#     Sharpe Ratio: 0.3331
+#     Total Return: 0.0012
+#   MACD→traditional_event_label_1.000:
+#     AUC-ROC: 0.5187
+#     Sharpe Ratio: 4.0768
+#     Total Return: 0.0056
+#   MACD_histogram→traditional_event_label_1.000:
+#     AUC-ROC: 0.4949
+#     Sharpe Ratio: -0.3590
+#     Total Return: -0.0015
+#   RSI→traditional_event_label_1.000:
+#     AUC-ROC: 0.5208
+#     Sharpe Ratio: 2.6758
+#     Total Return: 0.0062
+#   CUSUM_pos→traditional_event_label_1.000:
+#     AUC-ROC: 0.4997
+#     Sharpe Ratio: -0.1104
+#     Total Return: -0.0001
+#   CUSUM_neg→traditional_event_label_1.000:
+#     AUC-ROC: 0.5023
+#     Sharpe Ratio: 0.9984
+#     Total Return: 0.0007
+#   CUSUM_direction→traditional_event_label_1.000:
+#     AUC-ROC: 0.5001
+#     Sharpe Ratio: 0.3135
+#     Total Return: 0.0000
+#   returns→traditional_event_label_1.000:
+#     AUC-ROC: 0.5000
+#     Sharpe Ratio: -0.0368
+#     Total Return: -0.0000
+#   EMA_fast_distance_pct→traditional_event_label_1.000:
+#     AUC-ROC: 0.5149
+#     Sharpe Ratio: 1.2455
+#     Total Return: 0.0045
+#   EMA_medium_distance_pct→traditional_event_label_1.000:
+#     AUC-ROC: 0.5195
+#     Sharpe Ratio: 2.8301
+#     Total Return: 0.0059
+#   EMA_slow_distance_pct→traditional_event_label_1.000:
+#     AUC-ROC: 0.5195
+#     Sharpe Ratio: 4.8783
+#     Total Return: 0.0059
+#
+# --------------------------------------------------
+#
+# 🎯 EVENT: any_event_label
+# --------------------------------------------------
+# Occurrences: 493248
+# Frequency: 0.8290
+#
+# CAUSAL RELATIONSHIPS FOUND: 15
+#
+# Top Causal Features:
+#    1. 30min_Close
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    2. RSI
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+#    3. CUSUM_neg
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    4. returns
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+#    5. EMA_fast_distance_pct
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    6. EMA_medium_distance_pct
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    7. EMA_slow_distance_pct
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    8. BB_position
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    9. MACD_histogram
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#   10. CUSUM_pos
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+# VALIDATION RESULTS:
+#   30min_Close→any_event_label_1.000:
+#     AUC-ROC: 0.5048
+#     Sharpe Ratio: 0.4550
+#     Total Return: 0.0014
+#   RSI→any_event_label_1.000:
+#     AUC-ROC: 0.5136
+#     Sharpe Ratio: 0.7655
+#     Total Return: 0.0041
+#   CUSUM_neg→any_event_label_1.000:
+#     AUC-ROC: 0.5017
+#     Sharpe Ratio: 1.6177
+#     Total Return: 0.0005
+#   returns→any_event_label_1.000:
+#     AUC-ROC: 0.5000
+#     Sharpe Ratio: 0.0037
+#     Total Return: 0.0000
+#   EMA_fast_distance_pct→any_event_label_1.000:
+#     AUC-ROC: 0.5151
+#     Sharpe Ratio: 1.3457
+#     Total Return: 0.0045
+#   EMA_medium_distance_pct→any_event_label_1.000:
+#     AUC-ROC: 0.5203
+#     Sharpe Ratio: 3.0743
+#     Total Return: 0.0061
+#   EMA_slow_distance_pct→any_event_label_1.000:
+#     AUC-ROC: 0.5200
+#     Sharpe Ratio: 6.2223
+#     Total Return: 0.0060
+#   BB_position→any_event_label_1.000:
+#     AUC-ROC: 0.5025
+#     Sharpe Ratio: 0.1350
+#     Total Return: 0.0007
+#   MACD_histogram→any_event_label_1.000:
+#     AUC-ROC: 0.4982
+#     Sharpe Ratio: -0.1200
+#     Total Return: -0.0005
+#   CUSUM_pos→any_event_label_1.000:
+#     AUC-ROC: 0.4998
+#     Sharpe Ratio: -0.0807
+#     Total Return: -0.0001
+#   MACD→any_event_label_1.000:
+#     AUC-ROC: 0.5202
+#     Sharpe Ratio: 6.8275
+#     Total Return: 0.0061
+#   EMA_fast_12→any_event_label_1.000:
+#     AUC-ROC: 0.5051
+#     Sharpe Ratio: 0.4601
+#     Total Return: 0.0015
+#   MACD_efficiency→any_event_label_1.000:
+#     AUC-ROC: 0.5114
+#     Sharpe Ratio: 0.6364
+#     Total Return: 0.0034
+#   EMA_medium_26→any_event_label_1.000:
+#     AUC-ROC: 0.5056
+#     Sharpe Ratio: 0.4948
+#     Total Return: 0.0017
+#   ATR→any_event_label_1.000:
+#     AUC-ROC: 0.5000
+#     Sharpe Ratio: 0.0000
+#     Total Return: 0.0000
+#
+# --------------------------------------------------
+#
+# 🎯 EVENT: covent_2way_CUSUM_BB_upper_cross_label
+# --------------------------------------------------
+# Occurrences: 1200
+# Frequency: 0.0020
+#
+# CAUSAL RELATIONSHIPS FOUND: 15
+#
+# Top Causal Features:
+#    1. CUSUM_direction
+#       Strength: 0.9995 | P-value: 0.000473
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    2. returns
+#       Strength: 0.9994 | P-value: 0.000599
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+#    3. 4H_Volume
+#       Strength: 0.9927 | P-value: 0.007342
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    4. 30min_Volume
+#       Strength: 0.9910 | P-value: 0.008988
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    5. EMA_fast_distance_pct
+#       Strength: 0.9876 | P-value: 0.012438
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    6. RSI_momentum
+#       Strength: 0.9867 | P-value: 0.013259
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    7. EMA_medium_distance_pct
+#       Strength: 0.9799 | P-value: 0.020056
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    8. Volume_SMA
+#       Strength: 0.9670 | P-value: 0.033040
+#       Mechanism: information_asymmetry
+#       Justification: Supported by order_flow_impact mechanism: Order flow directly impacts prices through market mechanics
+#
+#    9. EMA_slow_distance_atr
+#       Strength: 0.9577 | P-value: 0.042290
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#   10. EMA_fast_distance_atr
+#       Strength: 0.9564 | P-value: 0.043553
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+# VALIDATION RESULTS:
+#   CUSUM_direction→covent_2way_CUSUM_BB_upper_cross_label_1.000:
+#     AUC-ROC: 0.5111
+#     Sharpe Ratio: 5.5607
+#     Total Return: 0.0033
+#   returns→covent_2way_CUSUM_BB_upper_cross_label_0.999:
+#     AUC-ROC: 0.5103
+#     Sharpe Ratio: 4.7066
+#     Total Return: 0.0031
+#   4H_Volume→covent_2way_CUSUM_BB_upper_cross_label_0.993:
+#     AUC-ROC: 0.5001
+#     Sharpe Ratio: 0.0008
+#     Total Return: 0.0000
+#   30min_Volume→covent_2way_CUSUM_BB_upper_cross_label_0.991:
+#     AUC-ROC: 0.5350
+#     Sharpe Ratio: 0.7338
+#     Total Return: 0.0105
+#   EMA_fast_distance_pct→covent_2way_CUSUM_BB_upper_cross_label_0.988:
+#     AUC-ROC: 0.5151
+#     Sharpe Ratio: 0.2454
+#     Total Return: 0.0045
+#   RSI_momentum→covent_2way_CUSUM_BB_upper_cross_label_0.987:
+#     AUC-ROC: 0.5282
+#     Sharpe Ratio: 0.8261
+#     Total Return: 0.0085
+#   EMA_medium_distance_pct→covent_2way_CUSUM_BB_upper_cross_label_0.980:
+#     AUC-ROC: 0.4841
+#     Sharpe Ratio: -0.2257
+#     Total Return: -0.0048
+#   Volume_SMA→covent_2way_CUSUM_BB_upper_cross_label_0.967:
+#     AUC-ROC: 0.5473
+#     Sharpe Ratio: 1.1681
+#     Total Return: 0.0142
+#   EMA_slow_distance_atr→covent_2way_CUSUM_BB_upper_cross_label_0.958:
+#     AUC-ROC: 0.5000
+#     Sharpe Ratio: 0.0000
+#     Total Return: 0.0000
+#   EMA_fast_distance_atr→covent_2way_CUSUM_BB_upper_cross_label_0.956:
+#     AUC-ROC: 0.5000
+#     Sharpe Ratio: 0.0000
+#     Total Return: 0.0000
+#   EMA_medium_distance_atr→covent_2way_CUSUM_BB_upper_cross_label_0.953:
+#     AUC-ROC: 0.5000
+#     Sharpe Ratio: 0.0000
+#     Total Return: 0.0000
+#   RSI→covent_2way_CUSUM_BB_upper_cross_label_0.938:
+#     AUC-ROC: 0.4769
+#     Sharpe Ratio: -0.4704
+#     Total Return: -0.0069
+#   EMA_slow_distance_pct→covent_2way_CUSUM_BB_upper_cross_label_0.935:
+#     AUC-ROC: 0.4948
+#     Sharpe Ratio: -0.0651
+#     Total Return: -0.0016
+#   CUSUM_pos→covent_2way_CUSUM_BB_upper_cross_label_0.930:
+#     AUC-ROC: 0.5013
+#     Sharpe Ratio: 0.7071
+#     Total Return: 0.0004
+#   BB_position→covent_2way_CUSUM_BB_upper_cross_label_0.929:
+#     AUC-ROC: 0.5358
+#     Sharpe Ratio: 1.4212
+#     Total Return: 0.0107
+#
+# --------------------------------------------------
+#
+# 🎯 EVENT: covent_2way_CUSUM_BB_lower_cross_label
+# --------------------------------------------------
+# Occurrences: 1525
+# Frequency: 0.0026
+#
+# CAUSAL RELATIONSHIPS FOUND: 15
+#
+# Top Causal Features:
+#    1. returns
+#       Strength: 0.9977 | P-value: 0.002263
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+#    2. vol_realized
+#       Strength: 0.9911 | P-value: 0.008880
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    3. CUSUM_direction
+#       Strength: 0.9908 | P-value: 0.009163
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    4. EMA_fast_distance_pct
+#       Strength: 0.9809 | P-value: 0.019144
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    5. BB_position
+#       Strength: 0.9750 | P-value: 0.025021
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    6. ATR
+#       Strength: 0.9730 | P-value: 0.026980
+#       Mechanism: information_asymmetry
+#       Justification: Supported by volatility_clustering mechanism: High volatility periods cause future high volatility
+#
+#    7. EMA_medium_distance_pct
+#       Strength: 0.9729 | P-value: 0.027055
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    8. EMA_slow_distance_pct
+#       Strength: 0.9596 | P-value: 0.040420
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    9. BB_width_pct
+#       Strength: 0.9574 | P-value: 0.042621
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#   10. RSI
+#       Strength: 0.9564 | P-value: 0.043590
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+# VALIDATION RESULTS:
+#   returns→covent_2way_CUSUM_BB_lower_cross_label_0.998:
+#     AUC-ROC: 0.5037
+#     Sharpe Ratio: 0.3905
+#     Total Return: 0.0011
+#   vol_realized→covent_2way_CUSUM_BB_lower_cross_label_0.991:
+#     AUC-ROC: 0.4785
+#     Sharpe Ratio: -1.7794
+#     Total Return: -0.0064
+#   CUSUM_direction→covent_2way_CUSUM_BB_lower_cross_label_0.991:
+#     AUC-ROC: 0.4921
+#     Sharpe Ratio: -1.6480
+#     Total Return: -0.0024
+#   EMA_fast_distance_pct→covent_2way_CUSUM_BB_lower_cross_label_0.981:
+#     AUC-ROC: 0.4861
+#     Sharpe Ratio: -2.5745
+#     Total Return: -0.0042
+#   BB_position→covent_2way_CUSUM_BB_lower_cross_label_0.975:
+#     AUC-ROC: 0.5321
+#     Sharpe Ratio: 1.1488
+#     Total Return: 0.0096
+#   ATR→covent_2way_CUSUM_BB_lower_cross_label_0.973:
+#     AUC-ROC: 0.5000
+#     Sharpe Ratio: 0.0000
+#     Total Return: 0.0000
+#   EMA_medium_distance_pct→covent_2way_CUSUM_BB_lower_cross_label_0.973:
+#     AUC-ROC: 0.4746
+#     Sharpe Ratio: -1.2199
+#     Total Return: -0.0076
+#   EMA_slow_distance_pct→covent_2way_CUSUM_BB_lower_cross_label_0.960:
+#     AUC-ROC: 0.4671
+#     Sharpe Ratio: -1.1814
+#     Total Return: -0.0099
+#   BB_width_pct→covent_2way_CUSUM_BB_lower_cross_label_0.957:
+#     AUC-ROC: 0.5197
+#     Sharpe Ratio: 0.3996
+#     Total Return: 0.0059
+#   RSI→covent_2way_CUSUM_BB_lower_cross_label_0.956:
+#     AUC-ROC: 0.4878
+#     Sharpe Ratio: -0.3761
+#     Total Return: -0.0037
+#   Volume_SMA→covent_2way_CUSUM_BB_lower_cross_label_0.956:
+#     AUC-ROC: 0.5383
+#     Sharpe Ratio: 0.6101
+#     Total Return: 0.0115
+#   MACD_histogram→covent_2way_CUSUM_BB_lower_cross_label_0.950:
+#     AUC-ROC: 0.4704
+#     Sharpe Ratio: -2.3776
+#     Total Return: -0.0089
+#   30min_Low→covent_2way_CUSUM_BB_lower_cross_label_0.930:
+#     AUC-ROC: 0.4947
+#     Sharpe Ratio: -0.1535
+#     Total Return: -0.0016
+#   30min_Close→covent_2way_CUSUM_BB_lower_cross_label_0.928:
+#     AUC-ROC: 0.4965
+#     Sharpe Ratio: -0.1027
+#     Total Return: -0.0010
+#   30min_Open→covent_2way_CUSUM_BB_lower_cross_label_0.928:
+#     AUC-ROC: 0.4985
+#     Sharpe Ratio: -0.0473
+#     Total Return: -0.0005
+#
+# --------------------------------------------------
+#
+# 🎯 EVENT: covent_2way_vpd_volatility_momentum_regime_label
+# --------------------------------------------------
+# Occurrences: 400
+# Frequency: 0.0007
+#
+# CAUSAL RELATIONSHIPS FOUND: 1
+#
+# Top Causal Features:
+#    1. ATR_pct
+#       Strength: 0.9327 | P-value: 0.067326
+#       Mechanism: information_asymmetry
+#       Justification: Supported by volatility_clustering mechanism: High volatility periods cause future high volatility
+#
+# VALIDATION RESULTS:
+#   ATR_pct→covent_2way_vpd_volatility_momentum_regime_label_0.933:
+#     AUC-ROC: 0.4940
+#     Sharpe Ratio: -0.0955
+#     Total Return: -0.0018
+#
+# --------------------------------------------------
+#
+# 🎯 EVENT: covent_2way_outlier_BB_expansion_label
+# --------------------------------------------------
+# Occurrences: 88600
+# Frequency: 0.1489
+#
+# CAUSAL RELATIONSHIPS FOUND: 15
+#
+# Top Causal Features:
+#    1. RSI
+#       Strength: 0.9998 | P-value: 0.000185
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+#    2. EMA_slow_distance_pct
+#       Strength: 0.9997 | P-value: 0.000267
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    3. returns
+#       Strength: 0.9997 | P-value: 0.000300
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+#    4. 30min_Close
+#       Strength: 0.9997 | P-value: 0.000306
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    5. MACD_signal
+#       Strength: 0.9991 | P-value: 0.000929
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    6. SMA_long_200
+#       Strength: 0.9989 | P-value: 0.001114
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    7. MACD_efficiency
+#       Strength: 0.9988 | P-value: 0.001223
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    8. EMA_medium_distance_pct
+#       Strength: 0.9987 | P-value: 0.001253
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    9. 4H_EMA_medium
+#       Strength: 0.9987 | P-value: 0.001314
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#   10. 1D_Low
+#       Strength: 0.9983 | P-value: 0.001656
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+# VALIDATION RESULTS:
+#   RSI→covent_2way_outlier_BB_expansion_label_1.000:
+#     AUC-ROC: 0.5133
+#     Sharpe Ratio: 1.6001
+#     Total Return: 0.0040
+#   EMA_slow_distance_pct→covent_2way_outlier_BB_expansion_label_1.000:
+#     AUC-ROC: 0.5103
+#     Sharpe Ratio: 1.5654
+#     Total Return: 0.0031
+#   returns→covent_2way_outlier_BB_expansion_label_1.000:
+#     AUC-ROC: 0.4990
+#     Sharpe Ratio: -0.3017
+#     Total Return: -0.0003
+#   30min_Close→covent_2way_outlier_BB_expansion_label_1.000:
+#     AUC-ROC: 0.5114
+#     Sharpe Ratio: 0.8070
+#     Total Return: 0.0034
+#   MACD_signal→covent_2way_outlier_BB_expansion_label_0.999:
+#     AUC-ROC: 0.4962
+#     Sharpe Ratio: -1.7301
+#     Total Return: -0.0012
+#   SMA_long_200→covent_2way_outlier_BB_expansion_label_0.999:
+#     AUC-ROC: 0.5127
+#     Sharpe Ratio: 0.7015
+#     Total Return: 0.0038
+#   MACD_efficiency→covent_2way_outlier_BB_expansion_label_0.999:
+#     AUC-ROC: 0.4959
+#     Sharpe Ratio: -0.7217
+#     Total Return: -0.0012
+#   EMA_medium_distance_pct→covent_2way_outlier_BB_expansion_label_0.999:
+#     AUC-ROC: 0.5114
+#     Sharpe Ratio: 1.3868
+#     Total Return: 0.0034
+#   4H_EMA_medium→covent_2way_outlier_BB_expansion_label_0.999:
+#     AUC-ROC: 0.5129
+#     Sharpe Ratio: 0.7403
+#     Total Return: 0.0039
+#   1D_Low→covent_2way_outlier_BB_expansion_label_0.998:
+#     AUC-ROC: 0.5113
+#     Sharpe Ratio: 0.7936
+#     Total Return: 0.0034
+#   30min_High→covent_2way_outlier_BB_expansion_label_0.998:
+#     AUC-ROC: 0.5112
+#     Sharpe Ratio: 0.7688
+#     Total Return: 0.0034
+#   BB_lower→covent_2way_outlier_BB_expansion_label_0.998:
+#     AUC-ROC: 0.5120
+#     Sharpe Ratio: 0.8181
+#     Total Return: 0.0036
+#   1D_Open→covent_2way_outlier_BB_expansion_label_0.998:
+#     AUC-ROC: 0.5116
+#     Sharpe Ratio: 0.6834
+#     Total Return: 0.0035
+#   1D_Close→covent_2way_outlier_BB_expansion_label_0.998:
+#     AUC-ROC: 0.5118
+#     Sharpe Ratio: 0.7788
+#     Total Return: 0.0035
+#   4H_Low→covent_2way_outlier_BB_expansion_label_0.998:
+#     AUC-ROC: 0.5122
+#     Sharpe Ratio: 0.8421
+#     Total Return: 0.0037
+#
+# --------------------------------------------------
+#
+# 🎯 EVENT: covent_2way_momentum_regime_BB_squeeze_label
+# --------------------------------------------------
+# Occurrences: 188575
+# Frequency: 0.3169
+#
+# CAUSAL RELATIONSHIPS FOUND: 15
+#
+# Top Causal Features:
+#    1. 30min_Open
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    2. 30min_High
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    3. 30min_Low
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    4. 30min_Close
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    5. 4H_High
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    6. 4H_Low
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    7. 4H_Close
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    8. EMA_fast_12
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    9. EMA_medium_26
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#   10. EMA_slow_50
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+# VALIDATION RESULTS:
+#   30min_Open→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5040
+#     Sharpe Ratio: 0.3117
+#     Total Return: 0.0012
+#   30min_High→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5039
+#     Sharpe Ratio: 0.2959
+#     Total Return: 0.0012
+#   30min_Low→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5042
+#     Sharpe Ratio: 0.3273
+#     Total Return: 0.0013
+#   30min_Close→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5040
+#     Sharpe Ratio: 0.3118
+#     Total Return: 0.0012
+#   4H_High→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5035
+#     Sharpe Ratio: 0.2623
+#     Total Return: 0.0011
+#   4H_Low→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5045
+#     Sharpe Ratio: 0.3650
+#     Total Return: 0.0013
+#   4H_Close→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5039
+#     Sharpe Ratio: 0.3060
+#     Total Return: 0.0012
+#   EMA_fast_12→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5044
+#     Sharpe Ratio: 0.3376
+#     Total Return: 0.0013
+#   EMA_medium_26→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5052
+#     Sharpe Ratio: 0.4096
+#     Total Return: 0.0016
+#   EMA_slow_50→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5060
+#     Sharpe Ratio: 0.4805
+#     Total Return: 0.0018
+#   SMA_short_20→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5048
+#     Sharpe Ratio: 0.3713
+#     Total Return: 0.0014
+#   SMA_medium_50→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5060
+#     Sharpe Ratio: 0.4834
+#     Total Return: 0.0018
+#   MACD→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5102
+#     Sharpe Ratio: 0.3986
+#     Total Return: 0.0031
+#   MACD_signal→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.5248
+#     Sharpe Ratio: 4.5546
+#     Total Return: 0.0074
+#   MACD_histogram→covent_2way_momentum_regime_BB_squeeze_label_1.000:
+#     AUC-ROC: 0.4998
+#     Sharpe Ratio: -0.0120
+#     Total Return: -0.0001
+#
+# --------------------------------------------------
+#
+# 🎯 EVENT: any_2way_covent_label
+# --------------------------------------------------
+# Occurrences: 273369
+# Frequency: 0.4594
+#
+# CAUSAL RELATIONSHIPS FOUND: 15
+#
+# Top Causal Features:
+#    1. 30min_Close
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    2. RSI
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+#    3. EMA_fast_distance_pct
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    4. EMA_medium_distance_pct
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    5. EMA_slow_distance_pct
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    6. BB_position
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    7. MACD_histogram
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    8. 30min_High
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    9. MACD
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#   10. returns
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+# VALIDATION RESULTS:
+#   30min_Close→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.5070
+#     Sharpe Ratio: 0.5037
+#     Total Return: 0.0021
+#   RSI→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.5228
+#     Sharpe Ratio: 4.4871
+#     Total Return: 0.0068
+#   EMA_fast_distance_pct→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.5163
+#     Sharpe Ratio: 1.3986
+#     Total Return: 0.0049
+#   EMA_medium_distance_pct→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.5220
+#     Sharpe Ratio: 4.4500
+#     Total Return: 0.0066
+#   EMA_slow_distance_pct→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.5219
+#     Sharpe Ratio: 10.8966
+#     Total Return: 0.0066
+#   BB_position→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.5018
+#     Sharpe Ratio: 0.0971
+#     Total Return: 0.0005
+#   MACD_histogram→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.4855
+#     Sharpe Ratio: -4.0545
+#     Total Return: -0.0043
+#   30min_High→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.5068
+#     Sharpe Ratio: 0.4797
+#     Total Return: 0.0020
+#   MACD→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.5199
+#     Sharpe Ratio: 6.6883
+#     Total Return: 0.0060
+#   returns→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.4994
+#     Sharpe Ratio: -0.9536
+#     Total Return: -0.0002
+#   30min_Low→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.5072
+#     Sharpe Ratio: 0.5263
+#     Total Return: 0.0022
+#   CUSUM_direction→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.5001
+#     Sharpe Ratio: 0.3229
+#     Total Return: 0.0000
+#   CUSUM_pos→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.4996
+#     Sharpe Ratio: -0.1294
+#     Total Return: -0.0001
+#   EMA_fast_12→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.5073
+#     Sharpe Ratio: 0.5195
+#     Total Return: 0.0022
+#   MACD_efficiency→any_2way_covent_label_1.000:
+#     AUC-ROC: 0.5200
+#     Sharpe Ratio: 4.9560
+#     Total Return: 0.0060
+#
+# --------------------------------------------------
+#
+# 🎯 EVENT: count_2way_covent_label
+# --------------------------------------------------
+# Occurrences: 266713
+# Frequency: 0.4482
+#
+# CAUSAL RELATIONSHIPS FOUND: 15
+#
+# Top Causal Features:
+#    1. 30min_High
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    2. 30min_Low
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    3. 30min_Close
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    4. MACD
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    5. MACD_histogram
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    6. RSI
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Supported by momentum_herding mechanism: Past returns cause future returns through behavioral herding
+#
+#    7. EMA_fast_distance_pct
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    8. EMA_medium_distance_pct
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#    9. EMA_slow_distance_pct
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+#   10. BB_position
+#       Strength: 1.0000 | P-value: 0.000000
+#       Mechanism: information_asymmetry
+#       Justification: Economic plausibility check bypassed
+#
+# VALIDATION RESULTS:
+#   30min_High→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.5067
+#     Sharpe Ratio: 0.4432
+#     Total Return: 0.0020
+#   30min_Low→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.5071
+#     Sharpe Ratio: 0.4859
+#     Total Return: 0.0021
+#   30min_Close→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.5069
+#     Sharpe Ratio: 0.4658
+#     Total Return: 0.0021
+#   MACD→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.5198
+#     Sharpe Ratio: 6.3242
+#     Total Return: 0.0060
+#   MACD_histogram→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.4862
+#     Sharpe Ratio: -3.3285
+#     Total Return: -0.0041
+#   RSI→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.5225
+#     Sharpe Ratio: 4.3318
+#     Total Return: 0.0068
+#   EMA_fast_distance_pct→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.5148
+#     Sharpe Ratio: 1.1426
+#     Total Return: 0.0045
+#   EMA_medium_distance_pct→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.5217
+#     Sharpe Ratio: 4.3175
+#     Total Return: 0.0065
+#   EMA_slow_distance_pct→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.5219
+#     Sharpe Ratio: 9.7434
+#     Total Return: 0.0066
+#   BB_position→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.5022
+#     Sharpe Ratio: 0.1187
+#     Total Return: 0.0006
+#   EMA_fast_12→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.5073
+#     Sharpe Ratio: 0.4814
+#     Total Return: 0.0022
+#   returns→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.4996
+#     Sharpe Ratio: -0.6600
+#     Total Return: -0.0001
+#   EMA_medium_26→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.5078
+#     Sharpe Ratio: 0.5218
+#     Total Return: 0.0024
+#   30min_Open→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.5069
+#     Sharpe Ratio: 0.4640
+#     Total Return: 0.0021
+#   CUSUM_pos→count_2way_covent_label_1.000:
+#     AUC-ROC: 0.4997
+#     Sharpe Ratio: -0.1040
+#     Total Return: -0.0001
+#
+# --------------------------------------------------
+#
+# ============================================================
+# FEATURE IMPORTANCE ANALYSIS
+# ============================================================
+#
+# TOP 15 MOST IMPORTANT CAUSAL FEATURES:
+# Rank                   Feature Avg Strength  Count Events
+# ----------------------------------------------------------------------
+#    1               EMA_slow_50       1.0000      2 momentum, covent
+#    2                   4H_High       1.0000      1 covent
+#    3                  4H_Close       1.0000      1 covent
+#    4              SMA_short_20       1.0000      1 covent
+#    5             SMA_medium_50       1.0000      1 covent
+#    6                      MACD       1.0000      7 outlier, momentum, traditional (+4 more)
+#    7               EMA_fast_12       1.0000      7 outlier, momentum, traditional (+4 more)
+#    8               MACD_signal       0.9997      3 momentum, covent, covent
+#    9                   returns       0.9996      9 CUSUM, outlier, traditional (+6 more)
+#   10           MACD_efficiency       0.9996      3 any, covent, any
+#   11              SMA_long_200       0.9989      1 covent
+#   12             4H_EMA_medium       0.9987      1 covent
+#   13                  BB_lower       0.9983      1 covent
+#   14                  1D_Close       0.9982      1 covent
+#   15           CUSUM_direction       0.9981      5 CUSUM, traditional, covent (+2 more)
+#
+# ============================================================
+# ECONOMIC MECHANISM ANALYSIS
+# ============================================================
+#
+# Mechanism distribution:
+#   information_asymmetry: 176 relationships (100.0%)
+# Event column analysis:
+#
+# Label distributions:
+#
+# Feature statistics:
+# Technical indicators: 27
+#
+# ============================================================
+# QUICK REFERENCE: BEST FEATURES BY EVENT
+# ============================================================
+#
+# CUSUM_event_label:
+#   1. CUSUM_direction (strength: 1.0000)
+#   2. returns (strength: 1.0000)
+#   3. EMA_fast_distance_pct (strength: 0.9997)
+#   4. EMA_medium_distance_pct (strength: 0.9993)
+#   5. 30min_Close (strength: 0.9989)
+#
+# vpd_volatility_event_label:
+#   1. Volume_SMA (strength: 0.9990)
+#   2. 4H_Volume (strength: 0.9987)
+#   3. CUSUM_pos (strength: 0.9926)
+#   4. 1D_Volume (strength: 0.9670)
+#   5. CUSUM_neg (strength: 0.9614)
+#
+# outlier_event_label:
+#   1. 30min_High (strength: 1.0000)
+#   2. 30min_Low (strength: 1.0000)
+#   3. 30min_Close (strength: 1.0000)
+#   4. MACD (strength: 1.0000)
+#   5. MACD_histogram (strength: 1.0000)
+#
+# momentum_regime_event_label:
+#   1. 30min_Open (strength: 1.0000)
+#   2. 30min_High (strength: 1.0000)
+#   3. 30min_Low (strength: 1.0000)
+#   4. 30min_Close (strength: 1.0000)
+#   5. EMA_fast_12 (strength: 1.0000)
+#
+# traditional_event_label:
+#   1. 30min_High (strength: 1.0000)
+#   2. 30min_Low (strength: 1.0000)
+#   3. 30min_Close (strength: 1.0000)
+#   4. EMA_fast_12 (strength: 1.0000)
+#   5. EMA_medium_26 (strength: 1.0000)
+#
+# any_event_label:
+#   1. 30min_Close (strength: 1.0000)
+#   2. RSI (strength: 1.0000)
+#   3. CUSUM_neg (strength: 1.0000)
+#   4. returns (strength: 1.0000)
+#   5. EMA_fast_distance_pct (strength: 1.0000)
+#
+# covent_2way_CUSUM_BB_upper_cross_label:
+#   1. CUSUM_direction (strength: 0.9995)
+#   2. returns (strength: 0.9994)
+#   3. 4H_Volume (strength: 0.9927)
+#   4. 30min_Volume (strength: 0.9910)
+#   5. EMA_fast_distance_pct (strength: 0.9876)
+#
+# covent_2way_CUSUM_BB_lower_cross_label:
+#   1. returns (strength: 0.9977)
+#   2. vol_realized (strength: 0.9911)
+#   3. CUSUM_direction (strength: 0.9908)
+#   4. EMA_fast_distance_pct (strength: 0.9809)
+#   5. BB_position (strength: 0.9750)
+#
+# covent_2way_vpd_volatility_momentum_regime_label:
+#   1. ATR_pct (strength: 0.9327)
+#
+# covent_2way_outlier_BB_expansion_label:
+#   1. RSI (strength: 0.9998)
+#   2. EMA_slow_distance_pct (strength: 0.9997)
+#   3. returns (strength: 0.9997)
+#   4. 30min_Close (strength: 0.9997)
+#   5. MACD_signal (strength: 0.9991)
+#
+# covent_2way_momentum_regime_BB_squeeze_label:
+#   1. 30min_Open (strength: 1.0000)
+#   2. 30min_High (strength: 1.0000)
+#   3. 30min_Low (strength: 1.0000)
+#   4. 30min_Close (strength: 1.0000)
+#   5. 4H_High (strength: 1.0000)
+#
+# any_2way_covent_label:
+#   1. 30min_Close (strength: 1.0000)
+#   2. RSI (strength: 1.0000)
+#   3. EMA_fast_distance_pct (strength: 1.0000)
+#   4. EMA_medium_distance_pct (strength: 1.0000)
+#   5. EMA_slow_distance_pct (strength: 1.0000)
+#
+# count_2way_covent_label:
+#   1. 30min_High (strength: 1.0000)
+#   2. 30min_Low (strength: 1.0000)
+#   3. 30min_Close (strength: 1.0000)
+#   4. MACD (strength: 1.0000)
+#   5. MACD_histogram (strength: 1.0000)
